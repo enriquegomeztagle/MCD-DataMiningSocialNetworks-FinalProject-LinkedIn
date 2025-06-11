@@ -1,2 +1,9 @@
+############################################### CUSTOM ###############################################
 # System files
 .DS_Store
+# All files in docs folder except for the .tex and the pdf file
+docs/*
+!docs/*.tex
+!docs/*.pdf
+# VS Code settings
+.vscode/
