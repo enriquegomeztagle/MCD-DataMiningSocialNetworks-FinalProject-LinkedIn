@@ -11,3 +11,5 @@ docs/*
 .ipynb_checkpoints/
 # Claude settings
 .claude/
+# Exclude all csv files
+*.csv
