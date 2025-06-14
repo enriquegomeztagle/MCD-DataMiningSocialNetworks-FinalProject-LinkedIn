@@ -1,9 +1,17 @@
 # %%
-base_path = "../data/"
+base_path = r"data/"
 import pandas as pd
 
 
 # %%
+import unicodedata
+
+def remove_accents(text):
+    if pd.isna(text):
+        return text
+    text = unicodedata.normalize('NFKD', text)
+    return ''.join([c for c in text if not unicodedata.combining(c)])
+
 def clean_data(df):
     pattern_cut = r"[\(,].*$"
     for col in ["First Name", "Last Name"]:
@@ -33,10 +41,14 @@ def clean_data(df):
         df[col] = df[col].str.replace(r"\s+", " ", regex=True).str.strip()
     for col in ["First Name", "Last Name"]:
         df[col] = df[col].str.title()
+    # Remove accents
+    for col in ["First Name", "Last Name"]:
+        df[col] = df[col].apply(remove_accents)
     return df
 
 
-df = pd.read_csv(base_path + "Connections.csv")
+
+df = pd.read_csv(base_path + "Connections.csv", skiprows=3)
 
 df_clean = clean_data(df.copy())
 df_clean.head()
@@ -76,6 +88,9 @@ def clean_data(df):
         df[col] = df[col].str.replace(r"\s+", " ", regex=True).str.strip()
     for col in ["To"]:
         df[col] = df[col].str.title()
+    # Remove accents
+    for col in ["To"]:
+        df[col] = df[col].apply(remove_accents)
     return df
 
 
