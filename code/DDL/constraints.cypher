@@ -40,9 +40,6 @@ ON (c.start);
 CREATE INDEX cert_end IF NOT EXISTS
 FOR (c:Certification)
 ON (c.end);
-CREATE INDEX post_date IF NOT EXISTS
-FOR (p:Post)
-ON (p.postedDate);
 
 // ───── LABELS ─────
 // :User, :Company, :University, :Skill, :Language, :Certification, :Job, :Post, :Share
@@ -51,8 +48,6 @@ ON (p.postedDate);
 //   :WORKED_AT   {title, location, from, to}
 //   :SPEAKS      {proficiency}
 //   :HAS_CERT    (no extra props on rel; dates live on Certification node)
-//   :POSTED      {on: postedDate}        (rel to Post)
-//   :INTERACTED_WITH {type, at: sharedAt}
 //   :SAVED_JOB   {savedDate}
 //   :CONNECTED   {since}
 //   :FOLLOWS     {since}
