@@ -29,7 +29,7 @@ CREATE
   (l1:Language {name: 'Spanish'}),
   (l2:Language {name: 'English'}),
 
-  // Certifications (with expiration date in the node)
+  // Certifications
   (cert1:Certification
     {
       name: 'Responsible AI: A Cloud Practitioner',
@@ -38,21 +38,6 @@ CREATE
       end: date('2025-01-01'),
       license: '7876257'
     }),
-
-  // Posts
-  (p1:Post
-    {id: 1, title: 'Introduction to GraphQL', postedDate: date('2025-06-04')}),
-
-  // Shares
-  (sh1:Share
-    {
-      id: 1,
-      text: '🎓 Just completed my course!',
-      sharedAt: datetime('2025-04-13T04:53:32')
-    }),
-
-  // Job offers
-  (j1:Job {id: 1, title: 'Associate Consultant', company: 'Oracle'}),
 
   // — RELATIONS —
   // Studies
@@ -84,13 +69,3 @@ CREATE
 
   // Certifications
   (u)-[:HAS_CERT]->(cert1),
-
-  // Posts
-  (u)-[:POSTED {on: date('2025-06-04')}]->(p1),
-
-  // Interactions
-  (u)-[:INTERACTED_WITH {type: 'LIKE', at: datetime('2025-06-05T10:15:00')}]->
-  (p1),
-
-  // Saved jobs
-  (u)-[:SAVED_JOB {savedDate: datetime('2025-05-29T17:37:00')}]->(j1),
