@@ -92,16 +92,5 @@ CREATE
   (u)-[:INTERACTED_WITH {type: 'LIKE', at: datetime('2025-06-05T10:15:00')}]->
   (p1),
 
-  // Shares
-  (u)-[:SHARED]->(sh1),
-
   // Saved jobs
   (u)-[:SAVED_JOB {savedDate: datetime('2025-05-29T17:37:00')}]->(j1),
-
-  // Applications
-  (u)-
-    [:APPLIED {
-        appDate: datetime('2024-11-14T10:00:00'),
-        resume: 'AI_Engineer-Enrique.pdf'
-      }]->
-  (j1);
