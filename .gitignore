@@ -13,5 +13,7 @@ docs/*
 .claude/
 # Exclude all csv files
 *.csv
-# Exclude neo4j dump & logs
+# Exclude neo4j dump
 neo4j.dump
+# Exclude all log files
+*.log
