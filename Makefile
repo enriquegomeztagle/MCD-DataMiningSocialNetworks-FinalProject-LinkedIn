@@ -10,4 +10,4 @@ clean-temp:
 	rm -f .git/objects/pack/._pack-*.idx
 
 format-docs:
-	latexindent -o doc/doc.tex doc/doc.tex
+	latexindent -o docs/doc.tex docs/doc.tex
